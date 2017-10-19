@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add Test</title>
+		<link rel="stylesheet" type="text/css" href="static/css/demo.css" />
+	    <link rel="stylesheet" type="text/css" href="static/css/style.css" /> 
+		<link rel="stylesheet" type="text/css" href="static/css/animate-custom.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+   		<script type="text/javascript" href="static/js/bootstrap.min.js"></script>
+    	<script type="text/javascript" href="static/js/jquery.min.js"></script>
+	    <link rel="stylesheet" href="static/css/w3.css"/>
+	</head>
+
+
+	<body>
+
+		<!-- Nav Bar -->
+
+		<nav class="navbar navbar-inverse">
+		 	<div class="container-fluid">
+		    	<div class="navbar-header">
+		     		<a class="navbar-brand">Welcome {{ current_user.name }} ! </a>
+		   		</div>
+		    	<ul class="nav navbar-nav">
+		      		<li><a href="/showStaffDash">Dash Board</a></li>
+		      		<li><a href="/showAddTest">Add Test</a></li>
+		      		<li><a href="/showObjective">Add Objective</a></li>
+		      		<li class="active"><a href="#">Add Big Question</a></li>
+		   	    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			      <li><a href="/showStaffProfile"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+			      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+			    </ul>
+		  	</div>
+		</nav>
+
+
+		<div id="wrapper" class="animate form w3-light-gray w3-section w3-padding w3-round w3-border">
+			<h1> Add Big Question : </h1><br>
+				<div id="bigquestion" class="animate form">
+					<div class="container-fluid">
+
+
+						<form id="addbigform" action="/addBigQ" method="POST" autocomplete="on">
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <p style="color:red"> {{ message }} </p>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}						
+
+							<h6>
+								<label>Question ID :</label>
+								<input id="questid" name="questid" required="required" type="number"/>
+							</h6>
+							<h6>
+								<label>Question Description :</label>
+								<input id="questdesc" name="questdesc" required="required" type="text"/>
+							</h6>
+							<h6>
+								<label>Space seperated Keywords :</label>
+								<input id="keyword" name="keywords" required="required" type="text"/>
+							</h6>
+							<h6>
+								<label>Marks :</label>
+								<input id="mark" name="mark" required="required" type="number"/>
+							</h6>
+
+
+							<div class="row">
+								<div class="col-md-4"></div>
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<button type="submit" form="addbigform" class="btn btn-primary btn-block">Add Big Question
+									</button>
+								</div>
+							</div>
+
+						</form>
+
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

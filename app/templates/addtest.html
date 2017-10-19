@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add Test</title>
+		<link rel="stylesheet" type="text/css" href="static/css/demo.css" />
+	    <link rel="stylesheet" type="text/css" href="static/css/style.css" /> 
+		<link rel="stylesheet" type="text/css" href="static/css/animate-custom.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+   		<script type="text/javascript" href="static/js/bootstrap.min.js"></script>
+    	<script type="text/javascript" href="static/js/jquery.min.js"></script>
+	    <link rel="stylesheet" href="static/css/w3.css"/>
+	</head>
+
+
+	<body>
+
+		<!-- Nav Bar -->
+
+		<nav class="navbar navbar-inverse">
+		 	<div class="container-fluid">
+		    	<div class="navbar-header">
+		     		<a class="navbar-brand">Welcome {{ current_user.name }} ! </a>
+		   		</div>
+		    	<ul class="nav navbar-nav">
+		      		<li><a href="/showStaffDash">Dash Board</a></li>
+		      		<li class="active"><a href="#">Add Test</a></li>
+		      		<li><a href="/showObjective">Add Objective</a></li>
+		      		<li><a href="/showBigQ">Add Big Question</a></li>
+		   	    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			      <li><a href="/showStaffProfile"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+			      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+			    </ul>
+		  	</div>
+		</nav>
+
+
+		<div id="wrapper" class="animate form w3-light-gray w3-section w3-padding w3-round w3-border">
+			<h1> Test Name : </h1><br>
+			<div class="container-fluid">
+				<form id="addtestform" action="/addTest" method="POST" autocomplete="on">	
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p style="color:red"> {{ message }} </p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}				
+					<h6>
+						<label>Test ID :</label>
+						<input id="testid" name="testid" required="required" type="number"/>
+					</h6>
+					<h6>
+						<label>Test Name :</label>
+						<input id="testname" name="testname" required="required" type="text"/>
+					</h6>
+					<h6>
+						<label>Total Marks :</label>
+						<input id="total" name="total" required="required" type="text"/>
+					</h6>
+					<h6>
+						<label>Subject :</label>
+						<input id="subname" name="subname" required="required" type="text"/>
+					</h6>					
+					<h6>
+						<label>Objective 1 Id :</label>
+						<select name="obj1" required="true" type="number">
+							{% for i in oq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+					<h6>
+						<label>Objective 2 Id :</label>
+						<select name="obj2" required="true" type="number">
+							{% for i in oq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>					</h6>
+					<h6>
+						<label>Objective 3 Id :</label>
+						<select name="obj3" required="true" type="number">
+							{% for i in oq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+					<h6>
+						<label>Objective 4 Id :</label>
+						<select name="obj4" required="true" type="number">
+							{% for i in oq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+					<h6>
+						<label>Objective 5 Id :</label>
+						<select name="obj5" required="true" type="number">
+							{% for i in oq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+					<h6>
+						<label>Big Question 1 Id :</label>
+						<select name="bq1" required="true" type="number">
+							{% for i in bq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+					<h6>
+						<label>Big Question 2 Id :</label>
+						<select name="bq2" required="true" type="number">
+							{% for i in bq %}
+							<option value="{{i.q_id}}">{{i.q_id}}</option>
+							{% endfor %}
+						</select>
+					</h6>
+
+	      			
+					<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<button type="submit" form="addtestform" class="btn btn-lg btn-primary btn-block">Create Test
+							</button>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

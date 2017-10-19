@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Attend Test</title>
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <script type="text/javascript" href="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" href="static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/w3.css"/>
+</head>
+
+
+<body background="../static/css/images/banner.jpg">
+
+	<!-- Nav Bar -->
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+            <a class="navbar-brand">Welcome {{ current_user.name }} ! </a>
+            </div>
+            <ul class="nav navbar-nav">
+                 <li class="active"><a href="#">Test</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/showStudentProfile"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+		<div id="wrapper" class="animate form w3-light-gray w3-section w3-padding w3-round w3-border">
+
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<h1> {{ t.test_name }} </h1><br>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+
+			<div class="container">
+				<form id="addtestform" action="/validate" method="POST" autocomplete="on">	
+                    
+					<div class="row">
+						<div class="col-md-4">
+							<h3> Objectives : </h3><br>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-4"></div>
+					</div>
+
+                    <input type="hidden" name="testid" value="{{t.test_id}}">
+                    <input type="hidden" name="userid" value="{{current_user.user_id}}">
+
+                    <div class="row">
+                    	1 ) {{ q1.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q1" value="1">
+                    	 	{{ q1.choice1 }} 
+                    	</div>
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q1" value="2">
+                    		{{ q1.choice2 }} 
+                    	</div>
+                    	<div class="col-md-4"> 
+                    		<input type="radio" name="q1" value="3">
+                    		{{ q1.choice3 }} 
+                    	</div>
+                    </div>
+
+                    <div class="row">
+                    	2 ) {{ q2.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q2" value="1">
+                    	 	{{ q2.choice1 }} 
+                    	</div>
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q2" value="2">
+                    		{{ q2.choice2 }} 
+                    	</div>
+                    	<div class="col-md-4"> 
+                    		<input type="radio" name="q2" value="3">
+                    		{{ q2.choice3 }} 
+                    	</div>
+                    </div>
+
+                    <div class="row">
+                    	3 ) {{ q3.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q3" value="1">
+                    	 	{{ q3.choice1 }} 
+                    	</div>
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q3" value="2">
+                    		{{ q3.choice2 }} 
+                    	</div>
+                    	<div class="col-md-4"> 
+                    		<input type="radio" name="q3" value="3">
+                    		{{ q3.choice3 }} 
+                    	</div>
+                    </div>
+
+                    <div class="row">
+                    	4 ) {{ q4.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q4" value="1">
+                    	 	{{ q4.choice1 }} 
+                    	</div>
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q4" value="2">
+                    		{{ q4.choice2 }} 
+                    	</div>
+                    	<div class="col-md-4"> 
+                    		<input type="radio" name="q4" value="3">
+                    		{{ q4.choice3 }} 
+                    	</div>
+                    </div>
+
+                    <div class="row">
+                    	5 ) {{ q5.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q5" value="1">
+                    	 	{{ q5.choice1 }} 
+                    	</div>
+                    	<div class="col-md-4">
+                    		<input type="radio" name="q5" value="2">
+                    		{{ q5.choice2 }} 
+                    	</div>
+                    	<div class="col-md-4"> 
+                    		<input type="radio" name="q5" value="3">
+                    		{{ q5.choice3 }} 
+                    	</div>
+                    </div>
+
+
+	      			<br>
+	      			<br>
+                    <div class="row">
+						<div class="col-md-4">
+							<h3> Big Questions : </h3><br>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-4"></div>
+					</div>
+
+					<div class="row">
+                    	1 ) {{ b1.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<textarea type="text" rows="6" cols="120" name="b1" form="addtestform"></textarea>
+                    </div>
+
+                    <div class="row">
+                    	2 ) {{ b2.q_desc }} 
+                    </div>
+                    <div class="row">
+                    	<textarea type="text" rows="6" cols="120" name="b2" form="addtestform"></textarea>
+                    </div>
+
+	      			<br>
+	      			<br>
+					<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<button type="submit" form="addtestform" class="btn btn-primary btn-block">Submit
+							</button>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+</body>
+</html>

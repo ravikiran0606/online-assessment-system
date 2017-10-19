@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>Staff Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+	<script type="text/javascript" href="static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" href="static/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="static/css/w3.css"/>
+</head>
+
+
+<body background="../static/css/images/banner.jpg">
+
+	<!-- Nav Bar -->
+
+	<nav class="navbar navbar-inverse">
+	 	<div class="container-fluid">
+	    	<div class="navbar-header">
+	     		<a class="navbar-brand">Welcome {{ current_user.name }} ! </a>
+	   		</div>
+	    	<ul class="nav navbar-nav">
+	      		<li class="active"><a href="#">Dash Board</a></li>
+	      		<li><a href="/showAddTest">Add Test</a></li>
+	      		<li><a href="/showObjective">Add Objective</a></li>
+		      	<li><a href="/showBigQ">Add Big Question</a></li>
+	   	    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li><a href="/showStaffProfile"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+		      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+		    </ul>
+	  	</div>
+	</nav> 
+
+	<div class="container">
+    
+      	<div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	          <h2> Tests Created : </h2>
+	        </div>
+	        <div class="col-md-4"></div>
+      	</div>
+      	<br>
+
+      	<div class="row">
+      		<div class="panel panel-default">
+		      	<table class="table table-striped w3-light-gray w3-round">
+			        <thead class="w3-light-blue">
+				        <tr>
+				            <th>Test ID: </th>
+				            <th>Test Name: </th>
+				            <th>Total Marks: </th>
+				            <th>Actions : </th>
+				        </tr>
+				    </thead>
+			  
+			        <tbody>
+
+			        	{% if not lst %}
+			        	<tr class="w3-light-gray">
+			        		<td>No Tests Available... </td>
+			        	</tr>
+			        	{% endif %}
+
+			        	{% if lst %}
+			        		{% for i in lst %}
+			        			<tr>
+					            	<td> {{ i.test_id }} </td>
+					           		<td> {{ i.test_name }} </td>
+					            	<td> {{ i.total_marks }} </td>
+					            	<td>
+					            		<form method="POST" action="/showResult" id="{{ i.test_name}}" >
+                                      		<input type="hidden" name="testid" value="{{i.test_id}}">
+                                      	</form>
+                                      	<button type="submit" form="{{i.test_name}}" class="btn btn-primary"> Get Results </button>
+					            	</td>
+				        		</tr>
+			        		{% endfor %}
+			        	{% endif %}
+
+			        </tbody>
+		      	</table>
+	      	</div>
+      	</div>
+
+      	<div class="row">
+      		<div class="col-md-4"></div>
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<a class="btn btn-primary btn-block" href="/showAddTest">Add Test</a>
+	        </div>
+      	</div>
+
+
+    </div>
+	
+
+</body>
+</html>

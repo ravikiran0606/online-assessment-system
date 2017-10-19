@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>Staff Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+	<script type="text/javascript" href="static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" href="static/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="static/css/w3.css"/>
+	<link rel="stylesheet" type="text/css" href="static/css/card.css">
+</head>
+
+
+<body background="../static/css/images/banner.jpg">
+
+	<!-- Nav Bar -->
+
+	<nav class="navbar navbar-inverse">
+	 	<div class="container-fluid">
+	    	<div class="navbar-header">
+	     		<a class="navbar-brand">Welcome {{ current_user.name }} ! </a>
+	   		</div>
+	    	<ul class="nav navbar-nav">
+	      		<li><a href="/showStaffDash">Dash Board</a></li>
+	      		<li><a href="/showAddTest">Add Test</a></li>
+	      		<li><a href="/showObjective">Add Objective</a></li>
+		      	<li><a href="/showBigQ">Add Big Question</a></li>
+	   	    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+		      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+		    </ul>
+	  	</div>
+	</nav> 
+
+	<div class="card w3-light-gray">
+		<img src="../static/css/images/male.png" alt="Profile" style="width:100%">
+	  	<h1>{{current_user.name}}</h1>
+	  	<p class="title">Staff</p>
+	  	<p>Anna University - College of Engineering, Guindy</p>
+	 	<p><button>Contact</button></p>
+	</div>
+	
+
+</body>
+</html>
